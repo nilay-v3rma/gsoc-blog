@@ -1,0 +1,30 @@
+project:
+  type: website
+
+website:
+  title: "Drawing Bonds That Matter – GSoC 2025 with ProLIF"
+  navbar:
+    right:
+      - text: about
+        href: https://nilay-v3rma.github.io/
+      - text: blog
+        href: https://nilay-v3rma.github.io/blog/
+      - text: projects
+        href: https://nilay-v3rma.github.io/projects/
+      - text: repositories
+        href: https://nilay-v3rma.github.io/repositories/
+      - text: cv
+        href: https://nilay-v3rma.github.io/cv/
+      - icon: github
+        href: https://github.com/nilay-v3rma
+      - icon: linkedin
+        href: https://www.linkedin.com/in/nilay-verma-1110a928a/
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+
+
+
