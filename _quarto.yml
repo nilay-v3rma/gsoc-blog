@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Drawing Bonds That Matter – GSoC 2025 with ProLIF"
+  title: "Nilay’s GSoC '25 Blog"
   navbar:
     right:
       - text: about
