@@ -2,7 +2,7 @@
 title: "Drawing Bonds That Matter – Welcome!"
 author: "Nilay Verma"
 date: "2025-05-10"
-categories: [intro]
+categories: [intro,Community Bonding Period]
 ---
 
 ![](intro_post.jpeg)
