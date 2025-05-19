@@ -1,1 +1,0 @@
-Sitemap: https://nilay-v3rma.github.io/gsoc-blog/sitemap.xml
