@@ -1,0 +1,29 @@
+---
+title: "Week 2 – Community Connections & PR Complete!"
+author: "Nilay Verma"
+date: "2025-05-26"
+categories: [Community Bonding Period]
+---
+
+Hi everyone! 👋
+
+Welcome to my GSoC Week 2 update. This week was focused on broader community introductions and wrapping up my first coding task.
+
+### 🌐 Wider Community Introduction
+
+This week, we had a **fantastic organization-wide meeting**! It was a chance for all GSoC contributors, our mentors, MDAnalysis core developers, and the [MDAnalysis](https://www.mdanalysis.org) administrators to connect. Everyone introduced themselves, and us GSoC contributors also gave a brief overview of our projects. It was really insightful to hear about the diverse projects underway and meet more of the community! Unfortunately, not everyone we hoped could join was able to make it, but it was a great session nonetheless.
+
+### ✅ First PR Merged!
+
+I’m thrilled to announce that the **refactoring task I mentioned in Week 1 is now complete and merged!** 🎉 The `network.py` file that contained everything (HTML, JS, CSS, Python) has now been converted to a module `network` ([PR #268](https://github.com/chemosim-lab/ProLIF/pull/268)). It’s a good feeling to have this foundational task wrapped up! :)
+
+### 📝 Reflections & Next Steps
+
+While this week didn't involve extensive new coding, these community interactions and completing initial setup tasks are crucial.
+
+---
+
+That’s the update for Week 2! 🌀
+Although I didn't dive as deep into the visualization backend as initially planned, I'll be picking that up next week and will start prototyping the initial ideas for the 2D interaction views.
+
+Stay tuned!
