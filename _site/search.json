@@ -1,17 +1,45 @@
 [
   {
-    "objectID": "posts/Week 1/index.html",
-    "href": "posts/Week 1/index.html",
-    "title": "Week 1 – Community Bonding Begins!",
+    "objectID": "posts/Week 3/index.html",
+    "href": "posts/Week 3/index.html",
+    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
     "section": "",
-    "text": "Hi everyone! 👋\nWeek 1 of the Community Bonding Period has been super exciting and productive. Here’s a quick overview of what I’ve been up to as I start my Google Summer of Code journey with MDAnalysis and ProLIF!\n\n🧑‍💻 Meeting My Mentors\nI had my first video call with both of my mentors – Cédric Bouysset (ProLIF author) and Valerij Talagayev. It was great getting to know them, discussing our expectations, and planning the early roadmap for the project. They were incredibly supportive and offered great insights on how to approach the initial stages.\n\n\n🛠️ Setting Up My Blog & Portfolio\nThis week, I also:\n\nSet up this blog using Quarto (you’re reading it now! 😄)\nPublished my personal portfolio using Jekyll/Al-Folio – feel free to check it out here!\n\n\n\n✅ Project Management & Planning\nTo stay on top of things, We created a public GitHub Project board to manage my GSoC tasks and track progress:\n🔗 GSoC 2025 Project Board\n\n\n📚 Diving into ProLIF\nI spent time reading through the ProLIF to build a solid understanding of the library’s core functionality and how interaction visualizations currently work. This will be critical in the coming weeks as I start implementing enhancements.\n\n\n🔧 First Coding Task!\nAs part of the setup, I completed a small refactoring task:\n🔹 Separated the JS code from plotting/network.py into a new file plotting/network.js. This helps modularize the codebase and makes it easier to maintain the JS components separately. Link to the PR\n\n\n👥 Contributor Sync-Up\nWe had a joint meeting with my mentors and Stuart, another GSoC contributor who’s also working on ProLIF (on a different project). It was really nice to connect, share our backgrounds, and align on some shared tools and practices. Looking forward to collaborating more in the future!\n\nThat’s a wrap for Week 1! 🌀\nNext week, I’ll be diving deeper into the visualization backend and start prototyping initial ideas for the 2D interaction views.\nStay tuned!"
+    "text": "Hey folks! 👋\nWelcome to the Week 3 update of my GSoC journey. This was a quieter week in terms of visible progress, but definitely an important one as I continued to explore and better understand the codebase I’ll be working with this summer."
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Drawing Bonds That Matter – Welcome!",
+    "objectID": "posts/Week 3/index.html#codebase-deep-dive",
+    "href": "posts/Week 3/index.html#codebase-deep-dive",
+    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
+    "section": "🔍 Codebase Deep Dive",
+    "text": "🔍 Codebase Deep Dive\nWith the community bonding phase still underway, I spent most of this week reading through the existing code, mapping how things are connected—which functions call which, how data flows across files, and how methods and variables interact across the network module and related parts of the codebase.\nIt’s easy to underestimate the time and mental effort required to build a mental model of a new codebase, especially one that’s evolved over time and involves multiple languages and layers (Python, JS, HTML, etc.). But this kind of groundwork is absolutely essential to avoid breaking things once real changes begin."
+  },
+  {
+    "objectID": "posts/Week 3/index.html#understanding-the-architecture",
+    "href": "posts/Week 3/index.html#understanding-the-architecture",
+    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
+    "section": "🧭 Understanding the Architecture",
+    "text": "🧭 Understanding the Architecture\nOne of my main goals this week was to get more clarity on how the visualization logic ties into the rest of the package, especially in preparation for building the 2D interaction views namely LigNetwork. I’m gradually getting a better sense of which components talk to each other and where I’ll need to intervene or extend functionality."
+  },
+  {
+    "objectID": "posts/Week 3/index.html#looking-ahead",
+    "href": "posts/Week 3/index.html#looking-ahead",
+    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
+    "section": "🚧 Looking Ahead",
+    "text": "🚧 Looking Ahead\nWith the bonding period wrapping up soon, I’m planning to kick off implementation work in Week 4. The focus will be on making a python function to handle the placement of protein residues in the diagram, and testing some ideas with minimal but functional examples.\n\nThat’s it for this week — a slow but steady pace as we build towards something exciting. Looking forward to sharing more hands-on work next time! 🚀\nStay tuned!"
+  },
+  {
+    "objectID": "posts/Week 2/index.html",
+    "href": "posts/Week 2/index.html",
+    "title": "Week 2 – Community Connections & PR Complete!",
     "section": "",
-    "text": "Hello and welcome to my GSoC 2025 blog! I’m Nilay Verma, a sophomore at IIT Gandhinagar, pursuing a dual major in Computer Science and Materials Science. This summer, I’m thrilled to be working with MDAnalysis under the Google Summer of Code program.\nMy project, titled “Improving ProLIF’s 2D interaction visualizations”, focuses on enhancing the clarity and usability of molecular interaction plots generated by ProLIF. This includes automating residue placement in LigNetwork plots to make them readable out-of-the-box, and possibly introducing new visualization styles like interaction-aware heatmaps or integration with tools like InteractionDrawer and Flareplot.\nThroughout the summer, I’ll be documenting my weekly progress, learnings, challenges, and breakthroughs here. If you’re curious about data visualization in cheminformatics, molecular interactions, or open-source scientific software, I hope you’ll find something of interest!\nStay tuned for weekly updates and behind-the-scenes looks into the project!\n🧪 Nilay\n\nCheck out my project abstract or follow me on GitHub to see the code in action!"
+    "text": "Hi everyone! 👋\nWelcome to my GSoC Week 2 update. This week was focused on broader community introductions and wrapping up my first coding task.\n\n🌐 Wider Community Introduction\nThis week, we had a fantastic organization-wide meeting! It was a chance for all GSoC contributors, our mentors, MDAnalysis core developers, and the MDAnalysis administrators to connect. Everyone introduced themselves, and us GSoC contributors also gave a brief overview of our projects. It was really insightful to hear about the diverse projects underway and meet more of the community! Unfortunately, not everyone we hoped could join was able to make it, but it was a great session nonetheless.\n\n\n✅ First PR Merged!\nI’m thrilled to announce that the refactoring task I mentioned in Week 1 is now complete and merged! 🎉 The network.py file that contained everything (HTML, JS, CSS, Python) has now been converted to a module network (PR #268). It’s a good feeling to have this foundational task wrapped up! :)\n\n\n📝 Reflections & Next Steps\nWhile this week didn’t involve extensive new coding, these community interactions and completing initial setup tasks are crucial.\n\nThat’s the update for Week 2! 🌀 Although I didn’t dive as deep into the visualization backend as initially planned, I’ll be picking that up next week and will start prototyping the initial ideas for the 2D interaction views.\nStay tuned!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Drawing Bonds That Matter – GSoC 2025 with MDAnalysis (ProLIF)",
+    "section": "",
+    "text": "Week 3 – Quiet Momentum: Exploring the Codebase\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nJun 2, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 – Community Connections & PR Complete!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 26, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1 – Community Bonding Begins!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 19, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nDrawing Bonds That Matter – Welcome!\n\n\n\nintro\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 10, 2025\n\n\nNilay Verma\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -21,17 +49,17 @@
     "text": "About this blog"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Drawing Bonds That Matter – GSoC 2025 with MDAnalysis (ProLIF)",
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Drawing Bonds That Matter – Welcome!",
     "section": "",
-    "text": "Week 2 – Community Connections & PR Complete!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 26, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1 – Community Bonding Begins!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 19, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nDrawing Bonds That Matter – Welcome!\n\n\n\nintro\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 10, 2025\n\n\nNilay Verma\n\n\n\n\n\nNo matching items"
+    "text": "Hello and welcome to my GSoC 2025 blog! I’m Nilay Verma, a sophomore at IIT Gandhinagar, pursuing a dual major in Computer Science and Materials Science. This summer, I’m thrilled to be working with MDAnalysis under the Google Summer of Code program.\nMy project, titled “Improving ProLIF’s 2D interaction visualizations”, focuses on enhancing the clarity and usability of molecular interaction plots generated by ProLIF. This includes automating residue placement in LigNetwork plots to make them readable out-of-the-box, and possibly introducing new visualization styles like interaction-aware heatmaps or integration with tools like InteractionDrawer and Flareplot.\nThroughout the summer, I’ll be documenting my weekly progress, learnings, challenges, and breakthroughs here. If you’re curious about data visualization in cheminformatics, molecular interactions, or open-source scientific software, I hope you’ll find something of interest!\nStay tuned for weekly updates and behind-the-scenes looks into the project!\n🧪 Nilay\n\nCheck out my project abstract or follow me on GitHub to see the code in action!"
   },
   {
-    "objectID": "posts/Week 2/index.html",
-    "href": "posts/Week 2/index.html",
-    "title": "Week 2 – Community Connections & PR Complete!",
+    "objectID": "posts/Week 1/index.html",
+    "href": "posts/Week 1/index.html",
+    "title": "Week 1 – Community Bonding Begins!",
     "section": "",
-    "text": "Hi everyone! 👋\nWelcome to my GSoC Week 2 update. This week was focused on broader community introductions and wrapping up my first coding task.\n\n🌐 Wider Community Introduction\nThis week, we had a fantastic organization-wide meeting! It was a chance for all GSoC contributors, our mentors, MDAnalysis core developers, and the MDAnalysis administrators to connect. Everyone introduced themselves, and us GSoC contributors also gave a brief overview of our projects. It was really insightful to hear about the diverse projects underway and meet more of the community! Unfortunately, not everyone we hoped could join was able to make it, but it was a great session nonetheless.\n\n\n✅ First PR Merged!\nI’m thrilled to announce that the refactoring task I mentioned in Week 1 is now complete and merged! 🎉 The network.py file that contained everything (HTML, JS, CSS, Python) has now been converted to a module network (PR #268). It’s a good feeling to have this foundational task wrapped up! :)\n\n\n📝 Reflections & Next Steps\nWhile this week didn’t involve extensive new coding, these community interactions and completing initial setup tasks are crucial.\n\nThat’s the update for Week 2! 🌀 Although I didn’t dive as deep into the visualization backend as initially planned, I’ll be picking that up next week and will start prototyping the initial ideas for the 2D interaction views.\nStay tuned!"
+    "text": "Hi everyone! 👋\nWeek 1 of the Community Bonding Period has been super exciting and productive. Here’s a quick overview of what I’ve been up to as I start my Google Summer of Code journey with MDAnalysis and ProLIF!\n\n🧑‍💻 Meeting My Mentors\nI had my first video call with both of my mentors – Cédric Bouysset (ProLIF author) and Valerij Talagayev. It was great getting to know them, discussing our expectations, and planning the early roadmap for the project. They were incredibly supportive and offered great insights on how to approach the initial stages.\n\n\n🛠️ Setting Up My Blog & Portfolio\nThis week, I also:\n\nSet up this blog using Quarto (you’re reading it now! 😄)\nPublished my personal portfolio using Jekyll/Al-Folio – feel free to check it out here!\n\n\n\n✅ Project Management & Planning\nTo stay on top of things, We created a public GitHub Project board to manage my GSoC tasks and track progress:\n🔗 GSoC 2025 Project Board\n\n\n📚 Diving into ProLIF\nI spent time reading through the ProLIF to build a solid understanding of the library’s core functionality and how interaction visualizations currently work. This will be critical in the coming weeks as I start implementing enhancements.\n\n\n🔧 First Coding Task!\nAs part of the setup, I completed a small refactoring task:\n🔹 Separated the JS code from plotting/network.py into a new file plotting/network.js. This helps modularize the codebase and makes it easier to maintain the JS components separately. Link to the PR\n\n\n👥 Contributor Sync-Up\nWe had a joint meeting with my mentors and Stuart, another GSoC contributor who’s also working on ProLIF (on a different project). It was really nice to connect, share our backgrounds, and align on some shared tools and practices. Looking forward to collaborating more in the future!\n\nThat’s a wrap for Week 1! 🌀\nNext week, I’ll be diving deeper into the visualization backend and start prototyping initial ideas for the 2D interaction views.\nStay tuned!"
   }
 ]

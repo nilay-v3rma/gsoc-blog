@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nilay Verma">
-<meta name="dcterms.date" content="2025-05-19">
+<meta name="dcterms.date" content="2025-06-02">
 
-<title>Week 1 – Community Bonding Begins! – Nilay’s GSoC ’25 Blog</title>
+<title>Week 3 – Quiet Momentum: Exploring the Codebase – Nilay’s GSoC ’25 Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Week 1 – Community Bonding Begins!</h1>
+      <h1 class="title">Week 3 – Quiet Momentum: Exploring the Codebase</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Community Bonding Period</div>
               </div>
@@ -152,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 19, 2025</p>
+        <p class="date">June 2, 2025</p>
       </div>
     </div>
     
@@ -171,40 +171,22 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Hi everyone! 👋</p>
-<p>Week 1 of the <strong>Community Bonding Period</strong> has been super exciting and productive. Here’s a quick overview of what I’ve been up to as I start my Google Summer of Code journey with <a href="https://www.mdanalysis.org/">MDAnalysis</a> and <a href="https://prolif.readthedocs.io/en/latest/">ProLIF</a>!</p>
-<section id="meeting-my-mentors" class="level3">
-<h3 class="anchored" data-anchor-id="meeting-my-mentors">🧑‍💻 Meeting My Mentors</h3>
-<p>I had my <strong>first video call with both of my mentors – <a href="https://cedric.bouysset.net/">Cédric Bouysset</a> (ProLIF author) and <a href="https://talagayev.github.io">Valerij Talagayev</a></strong>. It was great getting to know them, discussing our expectations, and planning the early roadmap for the project. They were incredibly supportive and offered great insights on how to approach the initial stages.</p>
+<p>Hey folks! 👋</p>
+<p>Welcome to the <strong>Week 3</strong> update of my GSoC journey. This was a quieter week in terms of visible progress, but definitely an important one as I continued to explore and better understand the codebase I’ll be working with this summer.</p>
+<section id="codebase-deep-dive" class="level2">
+<h2 class="anchored" data-anchor-id="codebase-deep-dive">🔍 Codebase Deep Dive</h2>
+<p>With the community bonding phase still underway, I spent most of this week <strong>reading through the existing code</strong>, mapping how things are connected—<strong>which functions call which</strong>, how <strong>data flows across files</strong>, and how <strong>methods and variables interact</strong> across the <code>network</code> module and related parts of the codebase.</p>
+<p>It’s easy to underestimate the time and mental effort required to <strong>build a mental model of a new codebase</strong>, especially one that’s evolved over time and involves multiple languages and layers (Python, JS, HTML, etc.). But this kind of groundwork is absolutely essential to avoid breaking things once real changes begin.</p>
 </section>
-<section id="setting-up-my-blog-portfolio" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-my-blog-portfolio">🛠️ Setting Up My Blog &amp; Portfolio</h3>
-<p>This week, I also:</p>
-<ul>
-<li>Set up this blog using <strong>Quarto</strong> (you’re reading it now! 😄)</li>
-<li>Published my personal portfolio using <strong>Jekyll/Al-Folio</strong> – feel free to check it out <a href="https://nilay-v3rma.github.io">here</a>!</li>
-</ul>
+<section id="understanding-the-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-architecture">🧭 Understanding the Architecture</h2>
+<p>One of my main goals this week was to get more clarity on how the <strong>visualization logic ties into the rest of the package</strong>, especially in preparation for building the 2D interaction views namely <strong>LigNetwork</strong>. I’m gradually getting a better sense of which components talk to each other and where I’ll need to intervene or extend functionality.</p>
 </section>
-<section id="project-management-planning" class="level3">
-<h3 class="anchored" data-anchor-id="project-management-planning">✅ Project Management &amp; Planning</h3>
-<p>To stay on top of things, We created a <strong>public GitHub Project board</strong> to manage my GSoC tasks and track progress:<br>
-🔗 <a href="https://github.com/users/nilay-v3rma/projects/3">GSoC 2025 Project Board</a></p>
-</section>
-<section id="diving-into-prolif" class="level3">
-<h3 class="anchored" data-anchor-id="diving-into-prolif">📚 Diving into ProLIF</h3>
-<p>I spent time reading through the <strong><a href="https://prolif.readthedocs.io/en/latest/">ProLIF</a></strong> to build a solid understanding of the library’s core functionality and how interaction visualizations currently work. This will be critical in the coming weeks as I start implementing enhancements.</p>
-</section>
-<section id="first-coding-task" class="level3">
-<h3 class="anchored" data-anchor-id="first-coding-task">🔧 First Coding Task!</h3>
-<p>As part of the setup, I completed a small refactoring task:<br>
-🔹 <strong>Separated the JS code from <code>plotting/network.py</code> into a new file <code>plotting/network.js</code></strong>. This helps modularize the codebase and makes it easier to maintain the JS components separately. <a href="https://github.com/chemosim-lab/ProLIF/pull/268">Link to the PR</a></p>
-</section>
-<section id="contributor-sync-up" class="level3">
-<h3 class="anchored" data-anchor-id="contributor-sync-up">👥 Contributor Sync-Up</h3>
-<p>We had a <strong>joint meeting with my mentors and <a href="https://yuyuan871111.github.io/">Stuart</a></strong>, another GSoC contributor who’s also working on ProLIF (on a different project). It was really nice to connect, share our backgrounds, and align on some shared tools and practices. Looking forward to collaborating more in the future!</p>
+<section id="looking-ahead" class="level2">
+<h2 class="anchored" data-anchor-id="looking-ahead">🚧 Looking Ahead</h2>
+<p>With the bonding period wrapping up soon, I’m planning to <strong>kick off implementation work in Week 4</strong>. The focus will be on making a python function to handle the placement of protein residues in the diagram, and testing some ideas with minimal but functional examples.</p>
 <hr>
-<p>That’s a wrap for Week 1! 🌀<br>
-Next week, I’ll be diving deeper into the visualization backend and start prototyping initial ideas for the 2D interaction views.</p>
+<p>That’s it for this week — a slow but steady pace as we build towards something exciting. Looking forward to sharing more hands-on work next time! 🚀</p>
 <p>Stay tuned!</p>
 
 

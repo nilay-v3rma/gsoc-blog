@@ -1,0 +1,30 @@
+---
+title: "Week 3 – Quiet Momentum: Exploring the Codebase"
+author: "Nilay Verma"
+date: "2025-06-02"
+categories: ["Community Bonding Period"]
+---
+
+Hey folks! 👋
+
+Welcome to the **Week 3** update of my GSoC journey. This was a quieter week in terms of visible progress, but definitely an important one as I continued to explore and better understand the codebase I’ll be working with this summer.
+
+## 🔍 Codebase Deep Dive
+
+With the community bonding phase still underway, I spent most of this week **reading through the existing code**, mapping how things are connected—**which functions call which**, how **data flows across files**, and how **methods and variables interact** across the `network` module and related parts of the codebase.
+
+It’s easy to underestimate the time and mental effort required to **build a mental model of a new codebase**, especially one that's evolved over time and involves multiple languages and layers (Python, JS, HTML, etc.). But this kind of groundwork is absolutely essential to avoid breaking things once real changes begin.
+
+## 🧭 Understanding the Architecture
+
+One of my main goals this week was to get more clarity on how the **visualization logic ties into the rest of the package**, especially in preparation for building the 2D interaction views namely **LigNetwork**. I’m gradually getting a better sense of which components talk to each other and where I’ll need to intervene or extend functionality.
+
+## 🚧 Looking Ahead
+
+With the bonding period wrapping up soon, I’m planning to **kick off implementation work in Week 4**. The focus will be on making a python function to handle the placement of protein residues in the diagram, and testing some ideas with minimal but functional examples.
+
+---
+
+That’s it for this week — a slow but steady pace as we build towards something exciting. Looking forward to sharing more hands-on work next time! 🚀
+
+Stay tuned!
