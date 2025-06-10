@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Nilay Verma">
+<meta name="dcterms.date" content="2025-06-09">
 
-<title>Drawing Bonds That Matter – GSoC 2025 with MDAnalysis (ProLIF) – Nilay’s GSoC ’25 Blog</title>
+<title>Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context – Nilay’s GSoC ’25 Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5755690aa4b26498bc8d700c4b2f8749.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5755690aa4b26498bc8d700c4b2f8749.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,77 +104,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Nilay’s GSoC ’25 Blog</span>
     </a>
   </div>
@@ -189,194 +166,110 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Drawing Bonds That Matter – GSoC 2025 with MDAnalysis (ProLIF)</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Coding Period</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Nilay Verma </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 9, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Q29kaW5nJTIwUGVyaW9k">Coding Period <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29tbXVuaXR5JTIwQm9uZGluZyUyMFBlcmlvZA==">Community Bonding Period <span class="quarto-category-count">(4)</span></div><div class="category" data-category="aW50cm8=">intro <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>Hey everyone! 👋</p>
+<p>Welcome to the <strong>Week 4</strong> update of my GSoC journey. This week marked the transition from reading and preparing into <strong>actively writing code</strong>, and I made good progress on interaction-driven layout logic for protein residues.</p>
+<section id="pr-status" class="level2">
+<h2 class="anchored" data-anchor-id="pr-status">📝 PR Status</h2>
+<p>To start with, I raised a PR to <a href="https://github.com/chemosim-lab/ProLIF/pull/274"><strong>enable exporting LigNetwork data as a NetworkX graph object</strong></a>, which is currently under review. This change lays the groundwork for more versatile layout strategies and integration with external graph tools.</p>
+<p>The updates discussed below — involving custom coordinate generation for residues — have not been raised as a PR yet. I’m still refining and testing the logic before pushing it upstream.</p>
+</section>
+<section id="from-random-to-reasoned-residue-placement" class="level2">
+<h2 class="anchored" data-anchor-id="from-random-to-reasoned-residue-placement">🧠 From Random to Reasoned: Residue Placement</h2>
+<p>My initial approach used <code>spring_layout</code> from NetworkX — a physics-inspired layout algorithm. While it <strong>reduced overlap somewhat</strong>, it lacked awareness of <strong>which residues interacted with which ligand atoms</strong>, leading to <strong>visually entangled diagrams</strong> (see image below):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="nc_layout.png" class="img-fluid figure-img"></p>
+<figcaption>Early entanglement issues using spring layout</figcaption>
+</figure>
+</div>
+<p>This made the visualization hard to interpret and missed the goal of contextual clarity.</p>
+</section>
+<section id="a-custom-interaction-aware-layout" class="level2">
+<h2 class="anchored" data-anchor-id="a-custom-interaction-aware-layout">🧭 A Custom, Interaction-Aware Layout</h2>
+<p>To address this, I implemented a custom layout function that:</p>
+<ul>
+<li><strong>Analyzes interaction data</strong> between ligand atoms and protein residues.<br>
+</li>
+<li><strong>Calculates direction vectors</strong> from the ligand center to interaction points.<br>
+</li>
+<li><strong>Places residues just outside the ligand</strong>, extending outward from their interaction point.<br>
+</li>
+<li><strong>Handles overlap</strong> by rotating nearby residues around the interaction anchor.</li>
+</ul>
+<p>This results in a layout where <strong>residues surround the ligand more meaningfully</strong>, visually aligned with their interactions and spaced to avoid clutter.</p>
+<p>Here’s a glimpse at the core logic:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>direction <span class="op">=</span> interaction_point[:<span class="dv">2</span>] <span class="op">-</span> ligand_center</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>direction_unit <span class="op">=</span> direction <span class="op">/</span> np.linalg.norm(direction)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>residue_pos <span class="op">=</span> interaction_point[:<span class="dv">2</span>] <span class="op">+</span> direction_unit <span class="op">*</span> base_offset_distance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Fallback placement uses a radial arrangement to fill in the gaps for residues that don’t have clearly defined interaction points, ensuring no residue is left floating or awkwardly positioned.</p>
+<p>Although this is a backup option for now, the priority is still to make the NetworkX layout options work by providing more information.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="custom_layout.png" class="img-fluid figure-img"></p>
+<figcaption>Although, the placement is not yet perfect</figcaption>
+</figure>
+</div>
+</section>
+<section id="implementation-notes" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-notes">🔧 Implementation Notes</h2>
+<p>I also implemented:</p>
+<ul>
+<li><strong>Ring centroid detection for π interactions:</strong> This helps precisely locate the center of aromatic rings, crucial for accurately positioning residues involved in pi-stacking or T-shaped pi interactions.</li>
+<li><strong>Overlap resolution logic with rotation around interaction points:</strong> This feature prevents residues from overlapping by rotating them (by 45 degrees clockwise) around their defined interaction points, ensuring a clear and uncluttered visualization.</li>
+<li><strong>A fallback circular distribution strategy for unpositioned residues:</strong> For residues without clear interaction points, this strategy arranges them in a circular pattern, preventing them from being left out and maintaining a coherent diagram.</li>
+</ul>
+<p>With this new layout engine, diagrams are now much clearer and biologically meaningful, setting a solid foundation for the interaction visualization system I’ll continue to build.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">📆 What’s Next?</h2>
+<p>Next week, I’ll be focusing on improving NetworkX-based layouts by incorporating interaction-aware edge weights and metadata. I’ll also begin integrating the new coordinate system into the LigNetwork rendering pipeline.</p>
+<hr>
+<p>Thanks for reading, and see you next week with more updates! 💻🧬</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q29kaW5nJTIwUGVyaW9k" data-listing-date-sort="1749407400000" data-listing-file-modified-sort="1749582997528" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="489">
-<div class="thumbnail"><a href="./posts/Week 4/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/Week 4/nc_layout.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Week 4/index.html" class="no-external">Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kaW5nJTIwUGVyaW9k'); return false;">Coding Period</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Week 4/index.html" class="no-external">
-Hey everyone! 👋
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Week 4/index.html" class="no-external">
-<div class="listing-date">
-Jun 9, 2025
-</div>
-<div class="listing-author">
-Nilay Verma
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Q29tbXVuaXR5JTIwQm9uZGluZyUyMFBlcmlvZA==" data-listing-date-sort="1748802600000" data-listing-file-modified-sort="1749151486186" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273">
-<div class="thumbnail"><a href="./posts/Week 3/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Week 3/index.html" class="no-external">Week 3 – Quiet Momentum: Exploring the Codebase</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29tbXVuaXR5JTIwQm9uZGluZyUyMFBlcmlvZA=='); return false;">Community Bonding Period</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Week 3/index.html" class="no-external">
-Hey folks! 👋
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Week 3/index.html" class="no-external">
-<div class="listing-date">
-Jun 2, 2025
-</div>
-<div class="listing-author">
-Nilay Verma
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Q29tbXVuaXR5JTIwQm9uZGluZyUyMFBlcmlvZA==" data-listing-date-sort="1748197800000" data-listing-file-modified-sort="1748372416493" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="215">
-<div class="thumbnail"><a href="./posts/Week 2/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Week 2/index.html" class="no-external">Week 2 – Community Connections &amp; PR Complete!</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29tbXVuaXR5JTIwQm9uZGluZyUyMFBlcmlvZA=='); return false;">Community Bonding Period</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Week 2/index.html" class="no-external">
-Hi everyone! 👋
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Week 2/index.html" class="no-external">
-<div class="listing-date">
-May 26, 2025
-</div>
-<div class="listing-author">
-Nilay Verma
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Q29tbXVuaXR5JTIwQm9uZGluZyUyMFBlcmlvZA==" data-listing-date-sort="1747593000000" data-listing-file-modified-sort="1747663462734" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="317">
-<div class="thumbnail"><a href="./posts/Week 1/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Week 1/index.html" class="no-external">Week 1 – Community Bonding Begins!</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29tbXVuaXR5JTIwQm9uZGluZyUyMFBlcmlvZA=='); return false;">Community Bonding Period</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Week 1/index.html" class="no-external">
-Hi everyone! 👋
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Week 1/index.html" class="no-external">
-<div class="listing-date">
-May 19, 2025
-</div>
-<div class="listing-author">
-Nilay Verma
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="aW50cm8lMkNDb21tdW5pdHklMjBCb25kaW5nJTIwUGVyaW9k" data-listing-date-sort="1746815400000" data-listing-file-modified-sort="1747663123171" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153">
-<div class="thumbnail"><a href="./posts/welcome/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/welcome/intro_post.jpeg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome/index.html" class="no-external">Drawing Bonds That Matter – Welcome!</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50cm8='); return false;">intro</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29tbXVuaXR5JTIwQm9uZGluZyUyMFBlcmlvZA=='); return false;">Community Bonding Period</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/welcome/index.html" class="no-external">
-Hello and welcome to my GSoC 2025 blog! I’m <strong>Nilay Verma</strong>, a sophomore at <strong>IIT Gandhinagar</strong>, pursuing a dual major in <strong>Computer Science and Materials Science</strong>. This summer, I’m…<strong></strong><strong></strong>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-May 10, 2025
-</div>
-<div class="listing-author">
-Nilay Verma
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
