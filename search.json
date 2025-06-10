@@ -28,25 +28,11 @@
     "text": "🚧 Looking Ahead\nWith the bonding period wrapping up soon, I’m planning to kick off implementation work in Week 4. The focus will be on making a python function to handle the placement of protein residues in the diagram, and testing some ideas with minimal but functional examples.\n\nThat’s it for this week — a slow but steady pace as we build towards something exciting. Looking forward to sharing more hands-on work next time! 🚀\nStay tuned!"
   },
   {
-    "objectID": "posts/Week 2/index.html",
-    "href": "posts/Week 2/index.html",
-    "title": "Week 2 – Community Connections & PR Complete!",
+    "objectID": "posts/Week 1/index.html",
+    "href": "posts/Week 1/index.html",
+    "title": "Week 1 – Community Bonding Begins!",
     "section": "",
-    "text": "Hi everyone! 👋\nWelcome to my GSoC Week 2 update. This week was focused on broader community introductions and wrapping up my first coding task.\n\n🌐 Wider Community Introduction\nThis week, we had a fantastic organization-wide meeting! It was a chance for all GSoC contributors, our mentors, MDAnalysis core developers, and the MDAnalysis administrators to connect. Everyone introduced themselves, and us GSoC contributors also gave a brief overview of our projects. It was really insightful to hear about the diverse projects underway and meet more of the community! Unfortunately, not everyone we hoped could join was able to make it, but it was a great session nonetheless.\n\n\n✅ First PR Merged!\nI’m thrilled to announce that the refactoring task I mentioned in Week 1 is now complete and merged! 🎉 The network.py file that contained everything (HTML, JS, CSS, Python) has now been converted to a module network (PR #268). It’s a good feeling to have this foundational task wrapped up! :)\n\n\n📝 Reflections & Next Steps\nWhile this week didn’t involve extensive new coding, these community interactions and completing initial setup tasks are crucial.\n\nThat’s the update for Week 2! 🌀 Although I didn’t dive as deep into the visualization backend as initially planned, I’ll be picking that up next week and will start prototyping the initial ideas for the 2D interaction views.\nStay tuned!"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Drawing Bonds That Matter – GSoC 2025 with MDAnalysis (ProLIF)",
-    "section": "",
-    "text": "Week 3 – Quiet Momentum: Exploring the Codebase\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nJun 2, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 – Community Connections & PR Complete!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 26, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1 – Community Bonding Begins!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 19, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nDrawing Bonds That Matter – Welcome!\n\n\n\nintro\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 10, 2025\n\n\nNilay Verma\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this blog"
+    "text": "Hi everyone! 👋\nWeek 1 of the Community Bonding Period has been super exciting and productive. Here’s a quick overview of what I’ve been up to as I start my Google Summer of Code journey with MDAnalysis and ProLIF!\n\n🧑‍💻 Meeting My Mentors\nI had my first video call with both of my mentors – Cédric Bouysset (ProLIF author) and Valerij Talagayev. It was great getting to know them, discussing our expectations, and planning the early roadmap for the project. They were incredibly supportive and offered great insights on how to approach the initial stages.\n\n\n🛠️ Setting Up My Blog & Portfolio\nThis week, I also:\n\nSet up this blog using Quarto (you’re reading it now! 😄)\nPublished my personal portfolio using Jekyll/Al-Folio – feel free to check it out here!\n\n\n\n✅ Project Management & Planning\nTo stay on top of things, We created a public GitHub Project board to manage my GSoC tasks and track progress:\n🔗 GSoC 2025 Project Board\n\n\n📚 Diving into ProLIF\nI spent time reading through the ProLIF to build a solid understanding of the library’s core functionality and how interaction visualizations currently work. This will be critical in the coming weeks as I start implementing enhancements.\n\n\n🔧 First Coding Task!\nAs part of the setup, I completed a small refactoring task:\n🔹 Separated the JS code from plotting/network.py into a new file plotting/network.js. This helps modularize the codebase and makes it easier to maintain the JS components separately. Link to the PR\n\n\n👥 Contributor Sync-Up\nWe had a joint meeting with my mentors and Stuart, another GSoC contributor who’s also working on ProLIF (on a different project). It was really nice to connect, share our backgrounds, and align on some shared tools and practices. Looking forward to collaborating more in the future!\n\nThat’s a wrap for Week 1! 🌀\nNext week, I’ll be diving deeper into the visualization backend and start prototyping initial ideas for the 2D interaction views.\nStay tuned!"
   },
   {
     "objectID": "posts/welcome/index.html",
@@ -56,10 +42,66 @@
     "text": "Hello and welcome to my GSoC 2025 blog! I’m Nilay Verma, a sophomore at IIT Gandhinagar, pursuing a dual major in Computer Science and Materials Science. This summer, I’m thrilled to be working with MDAnalysis under the Google Summer of Code program.\nMy project, titled “Improving ProLIF’s 2D interaction visualizations”, focuses on enhancing the clarity and usability of molecular interaction plots generated by ProLIF. This includes automating residue placement in LigNetwork plots to make them readable out-of-the-box, and possibly introducing new visualization styles like interaction-aware heatmaps or integration with tools like InteractionDrawer and Flareplot.\nThroughout the summer, I’ll be documenting my weekly progress, learnings, challenges, and breakthroughs here. If you’re curious about data visualization in cheminformatics, molecular interactions, or open-source scientific software, I hope you’ll find something of interest!\nStay tuned for weekly updates and behind-the-scenes looks into the project!\n🧪 Nilay\n\nCheck out my project abstract or follow me on GitHub to see the code in action!"
   },
   {
-    "objectID": "posts/Week 1/index.html",
-    "href": "posts/Week 1/index.html",
-    "title": "Week 1 – Community Bonding Begins!",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Hi everyone! 👋\nWeek 1 of the Community Bonding Period has been super exciting and productive. Here’s a quick overview of what I’ve been up to as I start my Google Summer of Code journey with MDAnalysis and ProLIF!\n\n🧑‍💻 Meeting My Mentors\nI had my first video call with both of my mentors – Cédric Bouysset (ProLIF author) and Valerij Talagayev. It was great getting to know them, discussing our expectations, and planning the early roadmap for the project. They were incredibly supportive and offered great insights on how to approach the initial stages.\n\n\n🛠️ Setting Up My Blog & Portfolio\nThis week, I also:\n\nSet up this blog using Quarto (you’re reading it now! 😄)\nPublished my personal portfolio using Jekyll/Al-Folio – feel free to check it out here!\n\n\n\n✅ Project Management & Planning\nTo stay on top of things, We created a public GitHub Project board to manage my GSoC tasks and track progress:\n🔗 GSoC 2025 Project Board\n\n\n📚 Diving into ProLIF\nI spent time reading through the ProLIF to build a solid understanding of the library’s core functionality and how interaction visualizations currently work. This will be critical in the coming weeks as I start implementing enhancements.\n\n\n🔧 First Coding Task!\nAs part of the setup, I completed a small refactoring task:\n🔹 Separated the JS code from plotting/network.py into a new file plotting/network.js. This helps modularize the codebase and makes it easier to maintain the JS components separately. Link to the PR\n\n\n👥 Contributor Sync-Up\nWe had a joint meeting with my mentors and Stuart, another GSoC contributor who’s also working on ProLIF (on a different project). It was really nice to connect, share our backgrounds, and align on some shared tools and practices. Looking forward to collaborating more in the future!\n\nThat’s a wrap for Week 1! 🌀\nNext week, I’ll be diving deeper into the visualization backend and start prototyping initial ideas for the 2D interaction views.\nStay tuned!"
+    "text": "About this blog"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Drawing Bonds That Matter – GSoC 2025 with MDAnalysis (ProLIF)",
+    "section": "",
+    "text": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context\n\n\n\nCoding Period\n\n\n\n\n\n\n\n\n\nJun 9, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3 – Quiet Momentum: Exploring the Codebase\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nJun 2, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 – Community Connections & PR Complete!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 26, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1 – Community Bonding Begins!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 19, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nDrawing Bonds That Matter – Welcome!\n\n\n\nintro\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 10, 2025\n\n\nNilay Verma\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Week 2/index.html",
+    "href": "posts/Week 2/index.html",
+    "title": "Week 2 – Community Connections & PR Complete!",
+    "section": "",
+    "text": "Hi everyone! 👋\nWelcome to my GSoC Week 2 update. This week was focused on broader community introductions and wrapping up my first coding task.\n\n🌐 Wider Community Introduction\nThis week, we had a fantastic organization-wide meeting! It was a chance for all GSoC contributors, our mentors, MDAnalysis core developers, and the MDAnalysis administrators to connect. Everyone introduced themselves, and us GSoC contributors also gave a brief overview of our projects. It was really insightful to hear about the diverse projects underway and meet more of the community! Unfortunately, not everyone we hoped could join was able to make it, but it was a great session nonetheless.\n\n\n✅ First PR Merged!\nI’m thrilled to announce that the refactoring task I mentioned in Week 1 is now complete and merged! 🎉 The network.py file that contained everything (HTML, JS, CSS, Python) has now been converted to a module network (PR #268). It’s a good feeling to have this foundational task wrapped up! :)\n\n\n📝 Reflections & Next Steps\nWhile this week didn’t involve extensive new coding, these community interactions and completing initial setup tasks are crucial.\n\nThat’s the update for Week 2! 🌀 Although I didn’t dive as deep into the visualization backend as initially planned, I’ll be picking that up next week and will start prototyping the initial ideas for the 2D interaction views.\nStay tuned!"
+  },
+  {
+    "objectID": "posts/Week 4/index.html",
+    "href": "posts/Week 4/index.html",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "",
+    "text": "Hey everyone! 👋\nWelcome to the Week 4 update of my GSoC journey. This week marked the transition from reading and preparing into actively writing code, and I made good progress on interaction-driven layout logic for protein residues."
+  },
+  {
+    "objectID": "posts/Week 4/index.html#pr-status",
+    "href": "posts/Week 4/index.html#pr-status",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "📝 PR Status",
+    "text": "📝 PR Status\nTo start with, I raised a PR to enable exporting LigNetwork data as a NetworkX graph object, which is currently under review. This change lays the groundwork for more versatile layout strategies and integration with external graph tools.\nThe updates discussed below — involving custom coordinate generation for residues — have not been raised as a PR yet. I’m still refining and testing the logic before pushing it upstream."
+  },
+  {
+    "objectID": "posts/Week 4/index.html#from-random-to-reasoned-residue-placement",
+    "href": "posts/Week 4/index.html#from-random-to-reasoned-residue-placement",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "🧠 From Random to Reasoned: Residue Placement",
+    "text": "🧠 From Random to Reasoned: Residue Placement\nMy initial approach used spring_layout from NetworkX — a physics-inspired layout algorithm. While it reduced overlap somewhat, it lacked awareness of which residues interacted with which ligand atoms, leading to visually entangled diagrams (see image below):\n\n\n\nEarly entanglement issues using spring layout\n\n\nThis made the visualization hard to interpret and missed the goal of contextual clarity."
+  },
+  {
+    "objectID": "posts/Week 4/index.html#a-custom-interaction-aware-layout",
+    "href": "posts/Week 4/index.html#a-custom-interaction-aware-layout",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "🧭 A Custom, Interaction-Aware Layout",
+    "text": "🧭 A Custom, Interaction-Aware Layout\nTo address this, I implemented a custom layout function that:\n\nAnalyzes interaction data between ligand atoms and protein residues.\n\nCalculates direction vectors from the ligand center to interaction points.\n\nPlaces residues just outside the ligand, extending outward from their interaction point.\n\nHandles overlap by rotating nearby residues around the interaction anchor.\n\nThis results in a layout where residues surround the ligand more meaningfully, visually aligned with their interactions and spaced to avoid clutter.\nHere’s a glimpse at the core logic:\ndirection = interaction_point[:2] - ligand_center\ndirection_unit = direction / np.linalg.norm(direction)\nresidue_pos = interaction_point[:2] + direction_unit * base_offset_distance\nFallback placement uses a radial arrangement to fill in the gaps for residues that don’t have clearly defined interaction points, ensuring no residue is left floating or awkwardly positioned.\nAlthough this is a backup option for now, the priority is still to make the NetworkX layout options work by providing more information.\n\n\n\nAlthough, the placement is not yet perfect"
+  },
+  {
+    "objectID": "posts/Week 4/index.html#implementation-notes",
+    "href": "posts/Week 4/index.html#implementation-notes",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "🔧 Implementation Notes",
+    "text": "🔧 Implementation Notes\nI also implemented:\n\nRing centroid detection for π interactions: This helps precisely locate the center of aromatic rings, crucial for accurately positioning residues involved in pi-stacking or T-shaped pi interactions.\nOverlap resolution logic with rotation around interaction points: This feature prevents residues from overlapping by rotating them (by 45 degrees clockwise) around their defined interaction points, ensuring a clear and uncluttered visualization.\nA fallback circular distribution strategy for unpositioned residues: For residues without clear interaction points, this strategy arranges them in a circular pattern, preventing them from being left out and maintaining a coherent diagram.\n\nWith this new layout engine, diagrams are now much clearer and biologically meaningful, setting a solid foundation for the interaction visualization system I’ll continue to build."
+  },
+  {
+    "objectID": "posts/Week 4/index.html#whats-next",
+    "href": "posts/Week 4/index.html#whats-next",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "📆 What’s Next?",
+    "text": "📆 What’s Next?\nNext week, I’ll be focusing on improving NetworkX-based layouts by incorporating interaction-aware edge weights and metadata. I’ll also begin integrating the new coordinate system into the LigNetwork rendering pipeline.\n\nThanks for reading, and see you next week with more updates! 💻🧬"
   }
 ]
