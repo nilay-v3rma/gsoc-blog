@@ -1,0 +1,53 @@
+---
+title: "Week 5 – Hybrid Layout with Custom Anchors and NetworkX"
+author: "Nilay Verma"
+date: "2025-06-16"
+categories: ["Coding Period"]
+---
+
+Hey everyone! 👋
+
+## 📝 PR Status
+
+This week, I raised a PR that integrates my **custom interaction-aware layout** with **NetworkX's spring layout**, using fixed ligand positions and smart initial residue placement. [Link to the PR](https://github.com/chemosim-lab/ProLIF/pull/279).
+
+The main focus of this update is refining residue positioning through a hybrid strategy and structuring the interaction graph to better reflect biochemical relationships.
+
+## 🧩 Custom Meets Classic: NetworkX with Initial Anchors
+
+Last week, I designed a layout system that places residues around the ligand based on interaction data. This week, I extended that logic by feeding those positions as **initial coordinates** (`pos`) to NetworkX’s `spring_layout` — **fixing the ligand nodes** so that only residues are repositioned during optimization.
+
+```python
+        pos = nx.spring_layout(
+            G,
+            pos=pos,  # Initial positions for residues and fixed ligand atoms
+            fixed=ligand_atom_indices,  # Fix ligand atoms at their coordinates
+            k=width * 0.02,  # Spring constant based on ligand size
+            iterations=100,
+            center=center,
+        )
+```
+
+This results in a layout that:
+- Retains semantic structure from the interaction-aware layout, and
+- Leverages spring dynamics to improve spacing and reduce clutter.
+- It's a clean blend of deterministic control and automated refinement.
+
+## 🔗 Structuring the Graph with Meaningful Edges
+To make the layout even more informative, I added edges between ligand atoms and interacting residues in the NetworkX graph:
+- These edges represent the biochemical interactions, giving the layout engine better context.
+- As a result, residues naturally cluster around their corresponding ligand regions, reinforcing interpretability.
+This not only enhances the visual clarity of the layout but also makes the graph more usable for downstream processing or analysis.
+
+## 🧠 Layout Stability and Visual Integrity
+Fixing ligand nodes ensures that core molecular structure remains stable, acting as an anchor while surrounding elements adapt. This prevents diagrams from distorting the ligand geometry and keeps the interaction map coherent.
+
+Residues still benefit from repulsion-based de-cluttering while preserving their biologically meaningful starting points.
+
+![Result... of the work done](result.png)
+
+## 📆 What’s Next?
+Next week, I’ll start to explore ohter layout options by NetworkX that suits the goal of this project, and also start making tests for the export to NetworkX graph feature, which was done last week.
+
+---
+Thanks for reading! More updates soon as we bring these visuals to life. 🧬📊
