@@ -1,0 +1,82 @@
+---
+title: "Week 6 – Export Tests & Residue Coordinates"
+author: "Nilay Verma"
+date: "2025-06-23"
+categories: ["Coding Period"]
+---
+
+Hey everyone! 👋
+
+Another week, another update on my GSoC journey with **ProLIF**!
+
+---
+
+## 📝 Current Pull Request Status
+
+My primary task this week involved crafting comprehensive tests for the features I've been developing in previous weeks: **residue coordinate computation** and the option to **export data as a NetworkX graph object**. I'm happy to report that the test file for the export feature is now complete and has been committed to its respective pull request.
+
+**[Check out the PR here!](https://github.com/chemosim-lab/ProLIF/pull/274)**
+
+Why the big push for tests? Well, without them, refactoring or extending **LigNetwork** becomes a high-stakes game. Subtle bugs—like wrong nodes, missing edges, or incorrect attributes—can easily sneak in. The goal with these tests is to cover all bases:
+
+* **Graph-construction logic:** Ensuring the foundation is solid.
+* **Atom and residue nodes:** Verifying their correct representation.
+* **Bond and interaction edges:** Confirming all connections are accurate.
+* **Attribute correctness:** Making sure all metadata is spot on.
+* **Corner cases:** Handling scenarios like empty interaction tables gracefully.
+
+---
+
+## Test Structure and Fixtures: Our Testing Toolkit
+
+To keep our tests organized and efficient, we've structured them within `tests/plotting/test_export_graph.py`. We leverage three key **Pytest fixtures** to set up our testing environment:
+
+* **`simple_ligand_mol`**: A benzene molecule (complete with explicit hydrogens) embedded in 3D.
+* **`simple_interaction_df`**: A small `DataFrame` showcasing three interaction types (`Hydrophobic`, `HBAcceptor`, `PiStacking`), including their weights, distances, and residue IDs.
+* **`lignetwork_obj`**: An instance of `LigNetwork` created using the two fixtures above.
+
+These fixtures are invaluable—they keep each test focused and significantly reduce code duplication, making our testing process cleaner and more maintainable.
+
+---
+
+## Dissecting Key Test Cases
+
+Let's dive into some of the crucial test cases I implemented:
+
+* ### `test_to_networkx_graph_with_bonds`
+    This test verifies the default behavior, which includes all ligand bonds. It confirms that the total node count matches the sum of atoms and residues, and that each atom node is correctly tagged "ligand" while each residue node is tagged "protein" with the right label. Crucially, it also checks that the number of "bond" edges perfectly matches `mol.GetNumBonds()`.
+
+* ### `test_to_networkx_graph_without_bonds`
+    Here, we test the `to_networkx_graph_object(include_ligand_bonds=False)` functionality. The test ensures that only interacting atoms (from the `DataFrame`) and residue nodes appear in the graph, and, as expected, there are zero "bond" edges between ligands.
+
+* ### `test_interaction_edge_attributes`
+    This test meticulously scans all edges of type "interaction." It verifies that for each edge, one endpoint is an integer (atom index) and the other is a string (residue ID). More importantly, it matches edge metadata (like `interaction_type`, `weight`, `distance`, and `components`) back against the rows in the original `DataFrame`, guaranteeing absolute consistency.
+
+* ### `test_node_attributes`
+    We iterate through all ligand atom nodes to confirm their attributes. This test checks that the "symbol" attribute matches `mol.GetAtomWithIdx(i).GetSymbol()` and that valid 3D "coords" are present.
+
+* ### `test_empty_interaction_df`
+    This critical corner case test provides an empty `DataFrame` with the correct `MultiIndex` structure. It expects the resulting graph to contain only ligand-atom nodes, with no protein or interaction edges, confirming graceful handling of empty data.
+
+---
+
+## Key Learnings from the Week
+
+This week reinforced some important lessons:
+
+* **Pytest fixtures** are incredibly powerful for composing complex inputs, making tests cleaner and more robust. They enable us to define reusable setup and teardown logic, ensuring consistent testing environments across multiple tests.
+* **MultiIndices in pandas** can be sliced safely and efficiently using `.xs()`. I specifically chose `.xs()` over `loc[]` here for enhanced **type safety**, as `loc[]` can sometimes return ambiguous types (either a `Series` or a `DataFrame`) when indexing a MultiIndex, which can lead to unexpected behavior in type-checked code. `.xs()` provides a more predictable and consistent return type when selecting cross-sections of data.
+* **Explicit tests** are our best defense against regressions when new features are added or existing code is refactored. They truly guard the integrity of our codebase by clearly defining expected behaviors and catching unintended side effects early in the development cycle.
+
+---
+
+## 📆 What's Next?
+
+The work on testing is far from over! Here's what's on the horizon:
+
+* Continue building out the **residue-coordinate test suite** to cover all possible edge cases, including scenarios with multiple interactions and those with no interactions.
+* Integrate **coverage checks** into the CI pipeline. This will be a crucial step to safeguard future layout changes and ensure our test coverage remains high.
+
+---
+
+Thanks for reading and keeping up with my progress! More updates soon as we drive these visuals and tests forward. 🧬📊
