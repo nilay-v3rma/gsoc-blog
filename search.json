@@ -1,80 +1,115 @@
 [
   {
-    "objectID": "posts/Week 3/index.html",
-    "href": "posts/Week 3/index.html",
-    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
-    "section": "",
-    "text": "Hey folks! 👋\nWelcome to the Week 3 update of my GSoC journey. This was a quieter week in terms of visible progress, but definitely an important one as I continued to explore and better understand the codebase I’ll be working with this summer."
-  },
-  {
-    "objectID": "posts/Week 3/index.html#codebase-deep-dive",
-    "href": "posts/Week 3/index.html#codebase-deep-dive",
-    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
-    "section": "🔍 Codebase Deep Dive",
-    "text": "🔍 Codebase Deep Dive\nWith the community bonding phase still underway, I spent most of this week reading through the existing code, mapping how things are connected—which functions call which, how data flows across files, and how methods and variables interact across the network module and related parts of the codebase.\nIt’s easy to underestimate the time and mental effort required to build a mental model of a new codebase, especially one that’s evolved over time and involves multiple languages and layers (Python, JS, HTML, etc.). But this kind of groundwork is absolutely essential to avoid breaking things once real changes begin."
-  },
-  {
-    "objectID": "posts/Week 3/index.html#understanding-the-architecture",
-    "href": "posts/Week 3/index.html#understanding-the-architecture",
-    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
-    "section": "🧭 Understanding the Architecture",
-    "text": "🧭 Understanding the Architecture\nOne of my main goals this week was to get more clarity on how the visualization logic ties into the rest of the package, especially in preparation for building the 2D interaction views namely LigNetwork. I’m gradually getting a better sense of which components talk to each other and where I’ll need to intervene or extend functionality."
-  },
-  {
-    "objectID": "posts/Week 3/index.html#looking-ahead",
-    "href": "posts/Week 3/index.html#looking-ahead",
-    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
-    "section": "🚧 Looking Ahead",
-    "text": "🚧 Looking Ahead\nWith the bonding period wrapping up soon, I’m planning to kick off implementation work in Week 4. The focus will be on making a python function to handle the placement of protein residues in the diagram, and testing some ideas with minimal but functional examples.\n\nThat’s it for this week — a slow but steady pace as we build towards something exciting. Looking forward to sharing more hands-on work next time! 🚀\nStay tuned!"
-  },
-  {
-    "objectID": "posts/Week 6/index.html",
-    "href": "posts/Week 6/index.html",
-    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "objectID": "posts/Week 7/index.html",
+    "href": "posts/Week 7/index.html",
+    "title": "Week 7 – Testing Residue Coordinates",
     "section": "",
     "text": "Hey everyone! 👋\nAnother week, another update on my GSoC journey with ProLIF!"
   },
   {
-    "objectID": "posts/Week 6/index.html#current-pull-request-status",
-    "href": "posts/Week 6/index.html#current-pull-request-status",
-    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "objectID": "posts/Week 7/index.html#current-pull-request-status",
+    "href": "posts/Week 7/index.html#current-pull-request-status",
+    "title": "Week 7 – Testing Residue Coordinates",
     "section": "📝 Current Pull Request Status",
-    "text": "📝 Current Pull Request Status\nMy primary task this week involved crafting comprehensive tests for the features I’ve been developing in previous weeks: residue coordinate computation and the option to export data as a NetworkX graph object. I’m happy to report that the test file for the export feature is now complete and has been committed to its respective pull request.\nCheck out the PR here!\nWhy the big push for tests? Well, without them, refactoring or extending LigNetwork becomes a high-stakes game. Subtle bugs—like wrong nodes, missing edges, or incorrect attributes—can easily sneak in. The goal with these tests is to cover all bases:\n\nGraph-construction logic: Ensuring the foundation is solid.\nAtom and residue nodes: Verifying their correct representation.\nBond and interaction edges: Confirming all connections are accurate.\nAttribute correctness: Making sure all metadata is spot on.\nCorner cases: Handling scenarios like empty interaction tables gracefully."
+    "text": "📝 Current Pull Request Status\nNo updates!"
   },
   {
-    "objectID": "posts/Week 6/index.html#test-structure-and-fixtures-our-testing-toolkit",
-    "href": "posts/Week 6/index.html#test-structure-and-fixtures-our-testing-toolkit",
-    "title": "Week 6 – Export Tests & Residue Coordinates",
-    "section": "Test Structure and Fixtures: Our Testing Toolkit",
-    "text": "Test Structure and Fixtures: Our Testing Toolkit\nTo keep our tests organized and efficient, we’ve structured them within tests/plotting/test_export_graph.py. We leverage three key Pytest fixtures to set up our testing environment:\n\nsimple_ligand_mol: A benzene molecule (complete with explicit hydrogens) embedded in 3D.\nsimple_interaction_df: A small DataFrame showcasing three interaction types (Hydrophobic, HBAcceptor, PiStacking), including their weights, distances, and residue IDs.\nlignetwork_obj: An instance of LigNetwork created using the two fixtures above.\n\nThese fixtures are invaluable—they keep each test focused and significantly reduce code duplication, making our testing process cleaner and more maintainable."
+    "objectID": "posts/Week 7/index.html#test-file-updates",
+    "href": "posts/Week 7/index.html#test-file-updates",
+    "title": "Week 7 – Testing Residue Coordinates",
+    "section": "Test File Updates",
+    "text": "Test File Updates\nFor the residue coordinate tests, we are using a simple_network fixture, which creates a LigNetwork object with a benzene molecule and a DataFrame containing a few interactions with different residues."
   },
   {
-    "objectID": "posts/Week 6/index.html#dissecting-key-test-cases",
-    "href": "posts/Week 6/index.html#dissecting-key-test-cases",
-    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "objectID": "posts/Week 7/index.html#dissecting-key-test-cases",
+    "href": "posts/Week 7/index.html#dissecting-key-test-cases",
+    "title": "Week 7 – Testing Residue Coordinates",
     "section": "Dissecting Key Test Cases",
-    "text": "Dissecting Key Test Cases\nLet’s dive into some of the crucial test cases I implemented:\n\ntest_to_networkx_graph_with_bonds\nThis test verifies the default behavior, which includes all ligand bonds. It confirms that the total node count matches the sum of atoms and residues, and that each atom node is correctly tagged “ligand” while each residue node is tagged “protein” with the right label. Crucially, it also checks that the number of “bond” edges perfectly matches mol.GetNumBonds().\ntest_to_networkx_graph_without_bonds\nHere, we test the to_networkx_graph_object(include_ligand_bonds=False) functionality. The test ensures that only interacting atoms (from the DataFrame) and residue nodes appear in the graph, and, as expected, there are zero “bond” edges between ligands.\ntest_interaction_edge_attributes\nThis test meticulously scans all edges of type “interaction.” It verifies that for each edge, one endpoint is an integer (atom index) and the other is a string (residue ID). More importantly, it matches edge metadata (like interaction_type, weight, distance, and components) back against the rows in the original DataFrame, guaranteeing absolute consistency.\ntest_node_attributes\nWe iterate through all ligand atom nodes to confirm their attributes. This test checks that the “symbol” attribute matches mol.GetAtomWithIdx(i).GetSymbol() and that valid 3D “coords” are present.\ntest_empty_interaction_df\nThis critical corner case test provides an empty DataFrame with the correct MultiIndex structure. It expects the resulting graph to contain only ligand-atom nodes, with no protein or interaction edges, confirming graceful handling of empty data."
+    "text": "Dissecting Key Test Cases\nLet’s dive into some of the crucial test cases I implemented:\n\ntest_calculate_protein_node_coordinates\nThis test focuses on the core logic of assigning coordinates to protein nodes in the network visualization. It begins by initializing the nodes and adding both protein and ligand atom nodes with their basic attributes (id, label, color, shape, group). The key part is calling simple_network._calculate_protein_node_coordinates() which calculates the x and y coordinates for each protein node. The test then asserts that these coordinates exist, are of float type, and that the protein nodes are positioned at a reasonable distance from the ligand center. Finally, it checks that protein nodes are not too close to each other, ensuring a visually clear layout.\ntest_node_layout_integration\nThis test ensures that the node layout calculation integrates correctly into the normal rendering process of the LigNetwork. It calls simple_network._get_js() to simulate the rendering, and then verifies that all protein nodes have x and y coordinates assigned. It also checks for overlap between the protein nodes, similar to the previous test, to maintain a clean and readable graph layout. This test is crucial for confirming that the layout algorithm works as expected within the broader context of the LigNetwork’s functionality."
   },
   {
-    "objectID": "posts/Week 6/index.html#key-learnings-from-the-week",
-    "href": "posts/Week 6/index.html#key-learnings-from-the-week",
-    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "objectID": "posts/Week 7/index.html#key-learnings-from-the-week",
+    "href": "posts/Week 7/index.html#key-learnings-from-the-week",
+    "title": "Week 7 – Testing Residue Coordinates",
     "section": "Key Learnings from the Week",
-    "text": "Key Learnings from the Week\nThis week reinforced some important lessons:\n\nPytest fixtures are incredibly powerful for composing complex inputs, making tests cleaner and more robust. They enable us to define reusable setup and teardown logic, ensuring consistent testing environments across multiple tests.\nMultiIndices in pandas can be sliced safely and efficiently using .xs(). I specifically chose .xs() over loc[] here for enhanced type safety, as loc[] can sometimes return ambiguous types (either a Series or a DataFrame) when indexing a MultiIndex, which can lead to unexpected behavior in type-checked code. .xs() provides a more predictable and consistent return type when selecting cross-sections of data.\nExplicit tests are our best defense against regressions when new features are added or existing code is refactored. They truly guard the integrity of our codebase by clearly defining expected behaviors and catching unintended side effects early in the development cycle."
+    "text": "Key Learnings from the Week\nThis week reinforced some important lessons:\n\nDistance-based layout requires careful tuning: The tests highlighted the importance of fine-tuning the parameters that control the distances between nodes to achieve a visually appealing and informative layout.\nIntegration tests are essential: The test_node_layout_integration function demonstrated the value of verifying that individual components work correctly within the larger system."
   },
   {
-    "objectID": "posts/Week 6/index.html#whats-next",
-    "href": "posts/Week 6/index.html#whats-next",
-    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "objectID": "posts/Week 7/index.html#whats-next",
+    "href": "posts/Week 7/index.html#whats-next",
+    "title": "Week 7 – Testing Residue Coordinates",
     "section": "📆 What’s Next?",
-    "text": "📆 What’s Next?\nThe work on testing is far from over! Here’s what’s on the horizon:\n\nContinue building out the residue-coordinate test suite to cover all possible edge cases, including scenarios with multiple interactions and those with no interactions.\nIntegrate coverage checks into the CI pipeline. This will be a crucial step to safeguard future layout changes and ensure our test coverage remains high.\n\n\nThanks for reading and keeping up with my progress! More updates soon as we drive these visuals and tests forward. 🧬📊"
+    "text": "📆 What’s Next?\nThe work on testing is far from over! Here’s what’s on the horizon:\n\nContinue building out the residue-coordinate test suite to cover all possible edge cases, including scenarios with multiple interactions and those with no interactions.\nUpdate the residue coordinates computation logic to avoid residues overlapping the ligand atoms.\n\n\nThanks for reading and keeping up with my progress! More updates soon as we drive these visuals and tests forward. 🧬📊"
   },
   {
-    "objectID": "posts/Week 2/index.html",
-    "href": "posts/Week 2/index.html",
-    "title": "Week 2 – Community Connections & PR Complete!",
+    "objectID": "posts/Week 4/index.html",
+    "href": "posts/Week 4/index.html",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
     "section": "",
-    "text": "Hi everyone! 👋\nWelcome to my GSoC Week 2 update. This week was focused on broader community introductions and wrapping up my first coding task.\n\n🌐 Wider Community Introduction\nThis week, we had a fantastic organization-wide meeting! It was a chance for all GSoC contributors, our mentors, MDAnalysis core developers, and the MDAnalysis administrators to connect. Everyone introduced themselves, and us GSoC contributors also gave a brief overview of our projects. It was really insightful to hear about the diverse projects underway and meet more of the community! Unfortunately, not everyone we hoped could join was able to make it, but it was a great session nonetheless.\n\n\n✅ First PR Merged!\nI’m thrilled to announce that the refactoring task I mentioned in Week 1 is now complete and merged! 🎉 The network.py file that contained everything (HTML, JS, CSS, Python) has now been converted to a module network (PR #268). It’s a good feeling to have this foundational task wrapped up! :)\n\n\n📝 Reflections & Next Steps\nWhile this week didn’t involve extensive new coding, these community interactions and completing initial setup tasks are crucial.\n\nThat’s the update for Week 2! 🌀 Although I didn’t dive as deep into the visualization backend as initially planned, I’ll be picking that up next week and will start prototyping the initial ideas for the 2D interaction views.\nStay tuned!"
+    "text": "Hey everyone! 👋\nWelcome to the Week 4 update of my GSoC journey. This week marked the transition from reading and preparing into actively writing code, and I made good progress on interaction-driven layout logic for protein residues."
+  },
+  {
+    "objectID": "posts/Week 4/index.html#pr-status",
+    "href": "posts/Week 4/index.html#pr-status",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "📝 PR Status",
+    "text": "📝 PR Status\nTo start with, I raised a PR to enable exporting LigNetwork data as a NetworkX graph object, which is currently under review. This change lays the groundwork for more versatile layout strategies and integration with external graph tools.\nThe updates discussed below — involving custom coordinate generation for residues — have not been raised as a PR yet. I’m still refining and testing the logic before pushing it upstream."
+  },
+  {
+    "objectID": "posts/Week 4/index.html#from-random-to-reasoned-residue-placement",
+    "href": "posts/Week 4/index.html#from-random-to-reasoned-residue-placement",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "🧠 From Random to Reasoned: Residue Placement",
+    "text": "🧠 From Random to Reasoned: Residue Placement\nMy initial approach used spring_layout from NetworkX — a physics-inspired layout algorithm. While it reduced overlap somewhat, it lacked awareness of which residues interacted with which ligand atoms, leading to visually entangled diagrams (see image below):\n\n\n\nEarly entanglement issues using spring layout\n\n\nThis made the visualization hard to interpret and missed the goal of contextual clarity."
+  },
+  {
+    "objectID": "posts/Week 4/index.html#a-custom-interaction-aware-layout",
+    "href": "posts/Week 4/index.html#a-custom-interaction-aware-layout",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "🧭 A Custom, Interaction-Aware Layout",
+    "text": "🧭 A Custom, Interaction-Aware Layout\nTo address this, I implemented a custom layout function that:\n\nAnalyzes interaction data between ligand atoms and protein residues.\n\nCalculates direction vectors from the ligand center to interaction points.\n\nPlaces residues just outside the ligand, extending outward from their interaction point.\n\nHandles overlap by rotating nearby residues around the interaction anchor.\n\nThis results in a layout where residues surround the ligand more meaningfully, visually aligned with their interactions and spaced to avoid clutter.\nHere’s a glimpse at the core logic:\ndirection = interaction_point[:2] - ligand_center\ndirection_unit = direction / np.linalg.norm(direction)\nresidue_pos = interaction_point[:2] + direction_unit * base_offset_distance\nFallback placement uses a radial arrangement to fill in the gaps for residues that don’t have clearly defined interaction points, ensuring no residue is left floating or awkwardly positioned.\nAlthough this is a backup option for now, the priority is still to make the NetworkX layout options work by providing more information.\n\n\n\nAlthough, the placement is not yet perfect"
+  },
+  {
+    "objectID": "posts/Week 4/index.html#implementation-notes",
+    "href": "posts/Week 4/index.html#implementation-notes",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "🔧 Implementation Notes",
+    "text": "🔧 Implementation Notes\nI also implemented:\n\nRing centroid detection for π interactions: This helps precisely locate the center of aromatic rings, crucial for accurately positioning residues involved in pi-stacking or T-shaped pi interactions.\nOverlap resolution logic with rotation around interaction points: This feature prevents residues from overlapping by rotating them (by 45 degrees clockwise) around their defined interaction points, ensuring a clear and uncluttered visualization.\nA fallback circular distribution strategy for unpositioned residues: For residues without clear interaction points, this strategy arranges them in a circular pattern, preventing them from being left out and maintaining a coherent diagram.\n\nWith this new layout engine, diagrams are now much clearer and biologically meaningful, setting a solid foundation for the interaction visualization system I’ll continue to build."
+  },
+  {
+    "objectID": "posts/Week 4/index.html#whats-next",
+    "href": "posts/Week 4/index.html#whats-next",
+    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "section": "📆 What’s Next?",
+    "text": "📆 What’s Next?\nNext week, I’ll be focusing on improving NetworkX-based layouts by incorporating interaction-aware edge weights and metadata. I’ll also begin integrating the new coordinate system into the LigNetwork rendering pipeline.\n\nThanks for reading, and see you next week with more updates! 💻🧬"
+  },
+  {
+    "objectID": "posts/Week 1/index.html",
+    "href": "posts/Week 1/index.html",
+    "title": "Week 1 – Community Bonding Begins!",
+    "section": "",
+    "text": "Hi everyone! 👋\nWeek 1 of the Community Bonding Period has been super exciting and productive. Here’s a quick overview of what I’ve been up to as I start my Google Summer of Code journey with MDAnalysis and ProLIF!\n\n🧑‍💻 Meeting My Mentors\nI had my first video call with both of my mentors – Cédric Bouysset (ProLIF author) and Valerij Talagayev. It was great getting to know them, discussing our expectations, and planning the early roadmap for the project. They were incredibly supportive and offered great insights on how to approach the initial stages.\n\n\n🛠️ Setting Up My Blog & Portfolio\nThis week, I also:\n\nSet up this blog using Quarto (you’re reading it now! 😄)\nPublished my personal portfolio using Jekyll/Al-Folio – feel free to check it out here!\n\n\n\n✅ Project Management & Planning\nTo stay on top of things, We created a public GitHub Project board to manage my GSoC tasks and track progress:\n🔗 GSoC 2025 Project Board\n\n\n📚 Diving into ProLIF\nI spent time reading through the ProLIF to build a solid understanding of the library’s core functionality and how interaction visualizations currently work. This will be critical in the coming weeks as I start implementing enhancements.\n\n\n🔧 First Coding Task!\nAs part of the setup, I completed a small refactoring task:\n🔹 Separated the JS code from plotting/network.py into a new file plotting/network.js. This helps modularize the codebase and makes it easier to maintain the JS components separately. Link to the PR\n\n\n👥 Contributor Sync-Up\nWe had a joint meeting with my mentors and Stuart, another GSoC contributor who’s also working on ProLIF (on a different project). It was really nice to connect, share our backgrounds, and align on some shared tools and practices. Looking forward to collaborating more in the future!\n\nThat’s a wrap for Week 1! 🌀\nNext week, I’ll be diving deeper into the visualization backend and start prototyping initial ideas for the 2D interaction views.\nStay tuned!"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Drawing Bonds That Matter – Welcome!",
+    "section": "",
+    "text": "Hello and welcome to my GSoC 2025 blog! I’m Nilay Verma, a sophomore at IIT Gandhinagar, pursuing a dual major in Computer Science and Materials Science. This summer, I’m thrilled to be working with MDAnalysis under the Google Summer of Code program.\nMy project, titled “Improving ProLIF’s 2D interaction visualizations”, focuses on enhancing the clarity and usability of molecular interaction plots generated by ProLIF. This includes automating residue placement in LigNetwork plots to make them readable out-of-the-box, and possibly introducing new visualization styles like interaction-aware heatmaps or integration with tools like InteractionDrawer and Flareplot.\nThroughout the summer, I’ll be documenting my weekly progress, learnings, challenges, and breakthroughs here. If you’re curious about data visualization in cheminformatics, molecular interactions, or open-source scientific software, I hope you’ll find something of interest!\nStay tuned for weekly updates and behind-the-scenes looks into the project!\n🧪 Nilay\n\nCheck out my project abstract or follow me on GitHub to see the code in action!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Drawing Bonds That Matter – GSoC 2025 with MDAnalysis (ProLIF)",
+    "section": "",
+    "text": "Week 7 – Testing Residue Coordinates\n\n\n\nCoding Period\n\n\n\n\n\n\n\n\n\nJun 30, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6 – Export Tests & Residue Coordinates\n\n\n\nCoding Period\n\n\n\n\n\n\n\n\n\nJun 23, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5 – Hybrid Layout with Custom Anchors and NetworkX\n\n\n\nCoding Period\n\n\n\n\n\n\n\n\n\nJun 16, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context\n\n\n\nCoding Period\n\n\n\n\n\n\n\n\n\nJun 9, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3 – Quiet Momentum: Exploring the Codebase\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nJun 2, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 – Community Connections & PR Complete!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 26, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1 – Community Bonding Begins!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 19, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nDrawing Bonds That Matter – Welcome!\n\n\n\nintro\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 10, 2025\n\n\nNilay Verma\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
   },
   {
     "objectID": "posts/Week 5/index.html",
@@ -119,73 +154,80 @@
     "text": "📆 What’s Next?\nNext week, I’ll start to explore ohter layout options by NetworkX that suits the goal of this project, and also start making tests for the export to NetworkX graph feature, which was done last week.\n\nThanks for reading! More updates soon as we bring these visuals to life. 🧬📊"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "posts/Week 2/index.html",
+    "href": "posts/Week 2/index.html",
+    "title": "Week 2 – Community Connections & PR Complete!",
     "section": "",
-    "text": "About this blog"
+    "text": "Hi everyone! 👋\nWelcome to my GSoC Week 2 update. This week was focused on broader community introductions and wrapping up my first coding task.\n\n🌐 Wider Community Introduction\nThis week, we had a fantastic organization-wide meeting! It was a chance for all GSoC contributors, our mentors, MDAnalysis core developers, and the MDAnalysis administrators to connect. Everyone introduced themselves, and us GSoC contributors also gave a brief overview of our projects. It was really insightful to hear about the diverse projects underway and meet more of the community! Unfortunately, not everyone we hoped could join was able to make it, but it was a great session nonetheless.\n\n\n✅ First PR Merged!\nI’m thrilled to announce that the refactoring task I mentioned in Week 1 is now complete and merged! 🎉 The network.py file that contained everything (HTML, JS, CSS, Python) has now been converted to a module network (PR #268). It’s a good feeling to have this foundational task wrapped up! :)\n\n\n📝 Reflections & Next Steps\nWhile this week didn’t involve extensive new coding, these community interactions and completing initial setup tasks are crucial.\n\nThat’s the update for Week 2! 🌀 Although I didn’t dive as deep into the visualization backend as initially planned, I’ll be picking that up next week and will start prototyping the initial ideas for the 2D interaction views.\nStay tuned!"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Drawing Bonds That Matter – GSoC 2025 with MDAnalysis (ProLIF)",
+    "objectID": "posts/Week 6/index.html",
+    "href": "posts/Week 6/index.html",
+    "title": "Week 6 – Export Tests & Residue Coordinates",
     "section": "",
-    "text": "Week 6 – Export Tests & Residue Coordinates\n\n\n\nCoding Period\n\n\n\n\n\n\n\n\n\nJun 23, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5 – Hybrid Layout with Custom Anchors and NetworkX\n\n\n\nCoding Period\n\n\n\n\n\n\n\n\n\nJun 16, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context\n\n\n\nCoding Period\n\n\n\n\n\n\n\n\n\nJun 9, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3 – Quiet Momentum: Exploring the Codebase\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nJun 2, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 – Community Connections & PR Complete!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 26, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1 – Community Bonding Begins!\n\n\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 19, 2025\n\n\nNilay Verma\n\n\n\n\n\n\n\n\n\n\n\n\nDrawing Bonds That Matter – Welcome!\n\n\n\nintro\n\nCommunity Bonding Period\n\n\n\n\n\n\n\n\n\nMay 10, 2025\n\n\nNilay Verma\n\n\n\n\n\nNo matching items"
+    "text": "Hey everyone! 👋\nAnother week, another update on my GSoC journey with ProLIF!"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Drawing Bonds That Matter – Welcome!",
-    "section": "",
-    "text": "Hello and welcome to my GSoC 2025 blog! I’m Nilay Verma, a sophomore at IIT Gandhinagar, pursuing a dual major in Computer Science and Materials Science. This summer, I’m thrilled to be working with MDAnalysis under the Google Summer of Code program.\nMy project, titled “Improving ProLIF’s 2D interaction visualizations”, focuses on enhancing the clarity and usability of molecular interaction plots generated by ProLIF. This includes automating residue placement in LigNetwork plots to make them readable out-of-the-box, and possibly introducing new visualization styles like interaction-aware heatmaps or integration with tools like InteractionDrawer and Flareplot.\nThroughout the summer, I’ll be documenting my weekly progress, learnings, challenges, and breakthroughs here. If you’re curious about data visualization in cheminformatics, molecular interactions, or open-source scientific software, I hope you’ll find something of interest!\nStay tuned for weekly updates and behind-the-scenes looks into the project!\n🧪 Nilay\n\nCheck out my project abstract or follow me on GitHub to see the code in action!"
+    "objectID": "posts/Week 6/index.html#current-pull-request-status",
+    "href": "posts/Week 6/index.html#current-pull-request-status",
+    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "section": "📝 Current Pull Request Status",
+    "text": "📝 Current Pull Request Status\nMy primary task this week involved crafting comprehensive tests for the features I’ve been developing in previous weeks: residue coordinate computation and the option to export data as a NetworkX graph object. I’m happy to report that the test file for the export feature is now complete and has been committed to its respective pull request.\nCheck out the PR here!\nWhy the big push for tests? Well, without them, refactoring or extending LigNetwork becomes a high-stakes game. Subtle bugs—like wrong nodes, missing edges, or incorrect attributes—can easily sneak in. The goal with these tests is to cover all bases:\n\nGraph-construction logic: Ensuring the foundation is solid.\nAtom and residue nodes: Verifying their correct representation.\nBond and interaction edges: Confirming all connections are accurate.\nAttribute correctness: Making sure all metadata is spot on.\nCorner cases: Handling scenarios like empty interaction tables gracefully."
   },
   {
-    "objectID": "posts/Week 1/index.html",
-    "href": "posts/Week 1/index.html",
-    "title": "Week 1 – Community Bonding Begins!",
-    "section": "",
-    "text": "Hi everyone! 👋\nWeek 1 of the Community Bonding Period has been super exciting and productive. Here’s a quick overview of what I’ve been up to as I start my Google Summer of Code journey with MDAnalysis and ProLIF!\n\n🧑‍💻 Meeting My Mentors\nI had my first video call with both of my mentors – Cédric Bouysset (ProLIF author) and Valerij Talagayev. It was great getting to know them, discussing our expectations, and planning the early roadmap for the project. They were incredibly supportive and offered great insights on how to approach the initial stages.\n\n\n🛠️ Setting Up My Blog & Portfolio\nThis week, I also:\n\nSet up this blog using Quarto (you’re reading it now! 😄)\nPublished my personal portfolio using Jekyll/Al-Folio – feel free to check it out here!\n\n\n\n✅ Project Management & Planning\nTo stay on top of things, We created a public GitHub Project board to manage my GSoC tasks and track progress:\n🔗 GSoC 2025 Project Board\n\n\n📚 Diving into ProLIF\nI spent time reading through the ProLIF to build a solid understanding of the library’s core functionality and how interaction visualizations currently work. This will be critical in the coming weeks as I start implementing enhancements.\n\n\n🔧 First Coding Task!\nAs part of the setup, I completed a small refactoring task:\n🔹 Separated the JS code from plotting/network.py into a new file plotting/network.js. This helps modularize the codebase and makes it easier to maintain the JS components separately. Link to the PR\n\n\n👥 Contributor Sync-Up\nWe had a joint meeting with my mentors and Stuart, another GSoC contributor who’s also working on ProLIF (on a different project). It was really nice to connect, share our backgrounds, and align on some shared tools and practices. Looking forward to collaborating more in the future!\n\nThat’s a wrap for Week 1! 🌀\nNext week, I’ll be diving deeper into the visualization backend and start prototyping initial ideas for the 2D interaction views.\nStay tuned!"
+    "objectID": "posts/Week 6/index.html#test-structure-and-fixtures-our-testing-toolkit",
+    "href": "posts/Week 6/index.html#test-structure-and-fixtures-our-testing-toolkit",
+    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "section": "Test Structure and Fixtures: Our Testing Toolkit",
+    "text": "Test Structure and Fixtures: Our Testing Toolkit\nTo keep our tests organized and efficient, we’ve structured them within tests/plotting/test_export_graph.py. We leverage three key Pytest fixtures to set up our testing environment:\n\nsimple_ligand_mol: A benzene molecule (complete with explicit hydrogens) embedded in 3D.\nsimple_interaction_df: A small DataFrame showcasing three interaction types (Hydrophobic, HBAcceptor, PiStacking), including their weights, distances, and residue IDs.\nlignetwork_obj: An instance of LigNetwork created using the two fixtures above.\n\nThese fixtures are invaluable—they keep each test focused and significantly reduce code duplication, making our testing process cleaner and more maintainable."
   },
   {
-    "objectID": "posts/Week 4/index.html",
-    "href": "posts/Week 4/index.html",
-    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
-    "section": "",
-    "text": "Hey everyone! 👋\nWelcome to the Week 4 update of my GSoC journey. This week marked the transition from reading and preparing into actively writing code, and I made good progress on interaction-driven layout logic for protein residues."
+    "objectID": "posts/Week 6/index.html#dissecting-key-test-cases",
+    "href": "posts/Week 6/index.html#dissecting-key-test-cases",
+    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "section": "Dissecting Key Test Cases",
+    "text": "Dissecting Key Test Cases\nLet’s dive into some of the crucial test cases I implemented:\n\ntest_to_networkx_graph_with_bonds\nThis test verifies the default behavior, which includes all ligand bonds. It confirms that the total node count matches the sum of atoms and residues, and that each atom node is correctly tagged “ligand” while each residue node is tagged “protein” with the right label. Crucially, it also checks that the number of “bond” edges perfectly matches mol.GetNumBonds().\ntest_to_networkx_graph_without_bonds\nHere, we test the to_networkx_graph_object(include_ligand_bonds=False) functionality. The test ensures that only interacting atoms (from the DataFrame) and residue nodes appear in the graph, and, as expected, there are zero “bond” edges between ligands.\ntest_interaction_edge_attributes\nThis test meticulously scans all edges of type “interaction.” It verifies that for each edge, one endpoint is an integer (atom index) and the other is a string (residue ID). More importantly, it matches edge metadata (like interaction_type, weight, distance, and components) back against the rows in the original DataFrame, guaranteeing absolute consistency.\ntest_node_attributes\nWe iterate through all ligand atom nodes to confirm their attributes. This test checks that the “symbol” attribute matches mol.GetAtomWithIdx(i).GetSymbol() and that valid 3D “coords” are present.\ntest_empty_interaction_df\nThis critical corner case test provides an empty DataFrame with the correct MultiIndex structure. It expects the resulting graph to contain only ligand-atom nodes, with no protein or interaction edges, confirming graceful handling of empty data."
   },
   {
-    "objectID": "posts/Week 4/index.html#pr-status",
-    "href": "posts/Week 4/index.html#pr-status",
-    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
-    "section": "📝 PR Status",
-    "text": "📝 PR Status\nTo start with, I raised a PR to enable exporting LigNetwork data as a NetworkX graph object, which is currently under review. This change lays the groundwork for more versatile layout strategies and integration with external graph tools.\nThe updates discussed below — involving custom coordinate generation for residues — have not been raised as a PR yet. I’m still refining and testing the logic before pushing it upstream."
+    "objectID": "posts/Week 6/index.html#key-learnings-from-the-week",
+    "href": "posts/Week 6/index.html#key-learnings-from-the-week",
+    "title": "Week 6 – Export Tests & Residue Coordinates",
+    "section": "Key Learnings from the Week",
+    "text": "Key Learnings from the Week\nThis week reinforced some important lessons:\n\nPytest fixtures are incredibly powerful for composing complex inputs, making tests cleaner and more robust. They enable us to define reusable setup and teardown logic, ensuring consistent testing environments across multiple tests.\nMultiIndices in pandas can be sliced safely and efficiently using .xs(). I specifically chose .xs() over loc[] here for enhanced type safety, as loc[] can sometimes return ambiguous types (either a Series or a DataFrame) when indexing a MultiIndex, which can lead to unexpected behavior in type-checked code. .xs() provides a more predictable and consistent return type when selecting cross-sections of data.\nExplicit tests are our best defense against regressions when new features are added or existing code is refactored. They truly guard the integrity of our codebase by clearly defining expected behaviors and catching unintended side effects early in the development cycle."
   },
   {
-    "objectID": "posts/Week 4/index.html#from-random-to-reasoned-residue-placement",
-    "href": "posts/Week 4/index.html#from-random-to-reasoned-residue-placement",
-    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
-    "section": "🧠 From Random to Reasoned: Residue Placement",
-    "text": "🧠 From Random to Reasoned: Residue Placement\nMy initial approach used spring_layout from NetworkX — a physics-inspired layout algorithm. While it reduced overlap somewhat, it lacked awareness of which residues interacted with which ligand atoms, leading to visually entangled diagrams (see image below):\n\n\n\nEarly entanglement issues using spring layout\n\n\nThis made the visualization hard to interpret and missed the goal of contextual clarity."
-  },
-  {
-    "objectID": "posts/Week 4/index.html#a-custom-interaction-aware-layout",
-    "href": "posts/Week 4/index.html#a-custom-interaction-aware-layout",
-    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
-    "section": "🧭 A Custom, Interaction-Aware Layout",
-    "text": "🧭 A Custom, Interaction-Aware Layout\nTo address this, I implemented a custom layout function that:\n\nAnalyzes interaction data between ligand atoms and protein residues.\n\nCalculates direction vectors from the ligand center to interaction points.\n\nPlaces residues just outside the ligand, extending outward from their interaction point.\n\nHandles overlap by rotating nearby residues around the interaction anchor.\n\nThis results in a layout where residues surround the ligand more meaningfully, visually aligned with their interactions and spaced to avoid clutter.\nHere’s a glimpse at the core logic:\ndirection = interaction_point[:2] - ligand_center\ndirection_unit = direction / np.linalg.norm(direction)\nresidue_pos = interaction_point[:2] + direction_unit * base_offset_distance\nFallback placement uses a radial arrangement to fill in the gaps for residues that don’t have clearly defined interaction points, ensuring no residue is left floating or awkwardly positioned.\nAlthough this is a backup option for now, the priority is still to make the NetworkX layout options work by providing more information.\n\n\n\nAlthough, the placement is not yet perfect"
-  },
-  {
-    "objectID": "posts/Week 4/index.html#implementation-notes",
-    "href": "posts/Week 4/index.html#implementation-notes",
-    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
-    "section": "🔧 Implementation Notes",
-    "text": "🔧 Implementation Notes\nI also implemented:\n\nRing centroid detection for π interactions: This helps precisely locate the center of aromatic rings, crucial for accurately positioning residues involved in pi-stacking or T-shaped pi interactions.\nOverlap resolution logic with rotation around interaction points: This feature prevents residues from overlapping by rotating them (by 45 degrees clockwise) around their defined interaction points, ensuring a clear and uncluttered visualization.\nA fallback circular distribution strategy for unpositioned residues: For residues without clear interaction points, this strategy arranges them in a circular pattern, preventing them from being left out and maintaining a coherent diagram.\n\nWith this new layout engine, diagrams are now much clearer and biologically meaningful, setting a solid foundation for the interaction visualization system I’ll continue to build."
-  },
-  {
-    "objectID": "posts/Week 4/index.html#whats-next",
-    "href": "posts/Week 4/index.html#whats-next",
-    "title": "Week 4 – Smarter Coordinates: Guiding Residue Placement with Interaction Context",
+    "objectID": "posts/Week 6/index.html#whats-next",
+    "href": "posts/Week 6/index.html#whats-next",
+    "title": "Week 6 – Export Tests & Residue Coordinates",
     "section": "📆 What’s Next?",
-    "text": "📆 What’s Next?\nNext week, I’ll be focusing on improving NetworkX-based layouts by incorporating interaction-aware edge weights and metadata. I’ll also begin integrating the new coordinate system into the LigNetwork rendering pipeline.\n\nThanks for reading, and see you next week with more updates! 💻🧬"
+    "text": "📆 What’s Next?\nThe work on testing is far from over! Here’s what’s on the horizon:\n\nContinue building out the residue-coordinate test suite to cover all possible edge cases, including scenarios with multiple interactions and those with no interactions.\nIntegrate coverage checks into the CI pipeline. This will be a crucial step to safeguard future layout changes and ensure our test coverage remains high.\n\n\nThanks for reading and keeping up with my progress! More updates soon as we drive these visuals and tests forward. 🧬📊"
+  },
+  {
+    "objectID": "posts/Week 3/index.html",
+    "href": "posts/Week 3/index.html",
+    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
+    "section": "",
+    "text": "Hey folks! 👋\nWelcome to the Week 3 update of my GSoC journey. This was a quieter week in terms of visible progress, but definitely an important one as I continued to explore and better understand the codebase I’ll be working with this summer."
+  },
+  {
+    "objectID": "posts/Week 3/index.html#codebase-deep-dive",
+    "href": "posts/Week 3/index.html#codebase-deep-dive",
+    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
+    "section": "🔍 Codebase Deep Dive",
+    "text": "🔍 Codebase Deep Dive\nWith the community bonding phase still underway, I spent most of this week reading through the existing code, mapping how things are connected—which functions call which, how data flows across files, and how methods and variables interact across the network module and related parts of the codebase.\nIt’s easy to underestimate the time and mental effort required to build a mental model of a new codebase, especially one that’s evolved over time and involves multiple languages and layers (Python, JS, HTML, etc.). But this kind of groundwork is absolutely essential to avoid breaking things once real changes begin."
+  },
+  {
+    "objectID": "posts/Week 3/index.html#understanding-the-architecture",
+    "href": "posts/Week 3/index.html#understanding-the-architecture",
+    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
+    "section": "🧭 Understanding the Architecture",
+    "text": "🧭 Understanding the Architecture\nOne of my main goals this week was to get more clarity on how the visualization logic ties into the rest of the package, especially in preparation for building the 2D interaction views namely LigNetwork. I’m gradually getting a better sense of which components talk to each other and where I’ll need to intervene or extend functionality."
+  },
+  {
+    "objectID": "posts/Week 3/index.html#looking-ahead",
+    "href": "posts/Week 3/index.html#looking-ahead",
+    "title": "Week 3 – Quiet Momentum: Exploring the Codebase",
+    "section": "🚧 Looking Ahead",
+    "text": "🚧 Looking Ahead\nWith the bonding period wrapping up soon, I’m planning to kick off implementation work in Week 4. The focus will be on making a python function to handle the placement of protein residues in the diagram, and testing some ideas with minimal but functional examples.\n\nThat’s it for this week — a slow but steady pace as we build towards something exciting. Looking forward to sharing more hands-on work next time! 🚀\nStay tuned!"
   }
 ]
