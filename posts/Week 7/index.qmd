@@ -1,0 +1,56 @@
+---
+title: "Week 7 – Testing Residue Coordinates"
+author: "Nilay Verma"
+date: "2025-06-30"
+categories: ["Coding Period"]
+---
+
+Hey everyone! 👋
+
+Another week, another update on my GSoC journey with **ProLIF**!
+
+---
+
+## 📝 Current Pull Request Status
+
+No updates!
+
+---
+
+## Test File Updates
+
+For the residue coordinate tests, we are using a `simple_network` fixture, which creates a `LigNetwork` object with a benzene molecule and a DataFrame containing a few interactions with different residues.
+
+---
+
+## Dissecting Key Test Cases
+
+Let's dive into some of the crucial test cases I implemented:
+
+* ### `test_calculate_protein_node_coordinates`
+    This test focuses on the core logic of assigning coordinates to protein nodes in the network visualization. It begins by initializing the nodes and adding both protein and ligand atom nodes with their basic attributes (id, label, color, shape, group). The key part is calling `simple_network._calculate_protein_node_coordinates()` which calculates the x and y coordinates for each protein node. The test then asserts that these coordinates exist, are of float type, and that the protein nodes are positioned at a reasonable distance from the ligand center. Finally, it checks that protein nodes are not too close to each other, ensuring a visually clear layout.
+
+* ### `test_node_layout_integration`
+    This test ensures that the node layout calculation integrates correctly into the normal rendering process of the LigNetwork. It calls `simple_network._get_js()` to simulate the rendering, and then verifies that all protein nodes have x and y coordinates assigned. It also checks for overlap between the protein nodes, similar to the previous test, to maintain a clean and readable graph layout. This test is crucial for confirming that the layout algorithm works as expected within the broader context of the LigNetwork's functionality.
+
+---
+
+## Key Learnings from the Week
+
+This week reinforced some important lessons:
+
+*   **Distance-based layout requires careful tuning:** The tests highlighted the importance of fine-tuning the parameters that control the distances between nodes to achieve a visually appealing and informative layout.
+*   **Integration tests are essential:** The `test_node_layout_integration` function demonstrated the value of verifying that individual components work correctly within the larger system.
+
+---
+
+## 📆 What's Next?
+
+The work on testing is far from over! Here's what's on the horizon:
+
+*   Continue building out the **residue-coordinate test suite** to cover all possible edge cases, including scenarios with multiple interactions and those with no interactions.
+*   Update the residue coordinates computation logic to **avoid residues overlapping the ligand atoms**.
+
+---
+
+Thanks for reading and keeping up with my progress! More updates soon as we drive these visuals and tests forward. 🧬📊
